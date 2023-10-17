@@ -37,10 +37,11 @@ class _QuizPageState extends State<QuizPage> {
     setState(() {
       if (quizBrain.isFinished() == true) {
         Alert(
-                context: context,
-                title: "Selesai!",
-                desc: "Anda telah menyelsaikan kuis.")
-            .show();
+          context: context,
+          title: "Selesai!",
+          desc: "Anda telah menyelsaikan kuis.",
+          buttons: [],
+        ).show();
         quizBrain.reset();
         scoreKeeper.clear();
       } else {
@@ -70,12 +71,22 @@ class _QuizPageState extends State<QuizPage> {
           child: Padding(
             padding: EdgeInsets.all(10.0),
             child: Center(
-              child: Text(
-                quizBrain.getQuestionText(0),
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 25.0,
-                  color: Colors.white,
+              child: Container(
+                decoration: BoxDecoration(
+                    border: Border.all(color: Color.fromARGB(0, 255, 221, 0)),
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    color: Color.fromARGB(255, 255, 183, 0)),
+                height: 250,
+                width: 330,
+                child: Center(
+                  child: Text(
+                    quizBrain.getQuestionText(0),
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 25.0,
+                      color: Colors.black,
+                    ),
+                  ),
                 ),
               ),
             ),
